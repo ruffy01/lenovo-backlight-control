@@ -40,15 +40,15 @@ setBacklight(isOn)
 ; ------------------Ruffy, 2018-06-10, Script to toggle and set BACKLIGHT_LEVEL 
 
 ^Space:: 							; hotkey "Ctrl + Space" to toggle global var "BACKLIGHT_LEVEL" between 0; 1; 2
-if (BACKLIGHT_LEVEL = 0){ 					; if (BACKLIGHT_LEVEL is "2") 
-    BACKLIGHT_LEVEL := 2					; then set "BACKLIGHT_LEVEL" to "0"
-    wasOn := isOn    						; turn OFF immediately by writing BACKLIGHT_LEVEL to Keyboard_Core.dll
+if (BACKLIGHT_LEVEL = 0){ 					; if (BACKLIGHT_LEVEL is "0") 
+    BACKLIGHT_LEVEL := 2					; then set "BACKLIGHT_LEVEL" to "2"
+    wasOn := isOn    						; write BACKLIGHT_LEVEL to Keyboard_Core.dll
     level := isOn ? BACKLIGHT_LEVEL : 0
     Run, thinkpadlightv02.exe "C:\ProgramData\Lenovo\ImController\Plugins\ThinkKeyboardPlugin\x86\Keyboard_Core.dll" %level% , , Hide
     } 						
 else 								; else ..
-    {BACKLIGHT_LEVEL := BACKLIGHT_LEVEL - 1 			; add integer "1" to "BACKLIGHT_LEVEL"
-    wasOn := isOn						; and turn ON immediately by writing BACKLIGHT_LEVEL to Keyboard_Core.dll
+    {BACKLIGHT_LEVEL := BACKLIGHT_LEVEL - 1 			; substract integer "1" of "BACKLIGHT_LEVEL"
+    wasOn := isOn						; and write result BACKLIGHT_LEVEL to Keyboard_Core.dll
     level := isOn ? BACKLIGHT_LEVEL : 0
     Run, thinkpadlightv02.exe "C:\ProgramData\Lenovo\ImController\Plugins\ThinkKeyboardPlugin\x86\Keyboard_Core.dll" %level% , , Hide
     } 
